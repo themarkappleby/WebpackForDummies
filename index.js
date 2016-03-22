@@ -1,29 +1,12 @@
 "use strict";
 
-const colors = require('colors');
-const fieldHandlers = require('./field-handlers');
-
-function generateConfig(options) {
-  try {
-    return handleFields(options);
-  } catch (error) {
-    showError(error)
+function WebpackForDummies (options) {
+  for (var optionName in options) {
+    this[optionName] = options[optionName];
   }
 }
 
-function handleFields (options) {
-  let config = {}
-  for (var handlerName in fieldHandlers) {
-    let fieldValue = fieldHandlers[handlerName](options);
-    if (fieldValue) config[handlerName] = fieldValue;
-  }
-  return config;
-}
+WebpackForDummies.prototype.generateConfig = require('./generateConfig');
+WebpackForDummies.prototype.startDevServer = require('./startDevServer');
 
-function showError (error) {
-  console.error(colors.red(`ERROR: webpack-for-dummies: ${error}`));
-}
-
-module.exports = {
-  generateConfig: generateConfig
-};
+module.exports = WebpackForDummies;

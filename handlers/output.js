@@ -2,17 +2,17 @@
 
 const path = require('path');
 
-function output (options) {
-  if (!options.output) throw 'output required';
+function output () {
+  if (!this.output) throw 'output required';
 
   const outputParams = {
-    path: path.dirname(options.output),
-    filename: path.basename(options.output),
+    path: path.dirname(this.output),
+    filename: path.basename(this.output),
     publicPath: '/'
   };
 
-  if (options.clientPort) {
-    outputParams.publicPath = 'http://localhost:' + options.clientPort + '/';
+  if (this.clientPort) {
+    outputParams.publicPath = 'http://localhost:' + this.clientPort + '/';
   }
 
   return outputParams;

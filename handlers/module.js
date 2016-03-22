@@ -1,20 +1,20 @@
 "use strict";
 
 // named moduleHandler to avoid naming conflict with node's module
-function moduleHandler (options) {
+function moduleHandler () {
   return {
-    loaders: [jsLoader(options)]
+    loaders: [jsLoader.call(this)]
   }
 }
 
-function jsLoader (options) {
+function jsLoader () {
   const loader = {
     test: /\.(js|jsx)$/,
     exclude: /node_modules/,
     loaders: ['babel?presets[]=react,presets[]=es2015']
   }
 
-  if (options.hotReload) {
+  if (this.hotReload) {
     loader.loaders.unshift('react-hot');
   }
 

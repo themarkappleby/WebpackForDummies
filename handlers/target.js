@@ -1,8 +1,8 @@
 "use strict";
 
-function target (options) {
-  if (options.target) {
-    return options.target;
+function target () {
+  if (this.target) {
+    return this.target;
   }
 }
 

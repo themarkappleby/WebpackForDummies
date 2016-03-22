@@ -2,8 +2,8 @@
 
 const nodeExternals = require('webpack-node-externals');
 
-function externals (options) {
-  if (options.target === 'node') {
+function externals () {
+  if (this.target === 'node') {
     return [nodeExternals()]
   }
 }

@@ -4,12 +4,19 @@ const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-function plugins (options) {
-  const pluginCollection = [
-    new CleanWebpackPlugin(path.dirname(options.output))
-  ];
+function plugins () {
 
-  if (options.hotReload) {
+  const pluginCollection = [];
+
+  if (this.clean !== false) {
+    pluginCollection.push(
+      new CleanWebpackPlugin(path.dirname(this.output), {
+        root: path.dirname(this.output) + '/..'
+      })
+    );
+  }
+
+  if (this.hotReload) {
     pluginCollection.push(
       new webpack.HotModuleReplacementPlugin()
     );

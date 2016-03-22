@@ -1,7 +1,7 @@
 "use strict";
 
-function node (options) {
-  if (options.target === 'node') {
+function node () {
+  if (this.target === 'node') {
     return {
       __filename: true,
       __dirname: true

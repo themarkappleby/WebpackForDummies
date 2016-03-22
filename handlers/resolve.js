@@ -1,6 +1,6 @@
 "use strict";
 
-function resolve (options) {
+function resolve () {
   return {
     extensions: ['', '.js', '.jsx']
   };
