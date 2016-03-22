@@ -1,6 +1,6 @@
 "use strict";
 
-function entry(options) {
+function entry (options) {
   if (!options.input) throw 'input required';
   return options.input;
 }

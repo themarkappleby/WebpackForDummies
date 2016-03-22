@@ -14,7 +14,8 @@ function generateConfig(options) {
 function handleFields (options) {
   let config = {}
   for (var handlerName in fieldHandlers) {
-    config[handlerName] = fieldHandlers[handlerName](options);
+    let fieldValue = fieldHandlers[handlerName](options);
+    if (fieldValue) config[handlerName] = fieldValue;
   }
   return config;
 }

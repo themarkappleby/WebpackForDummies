@@ -1,8 +1,12 @@
 "use strict";
 
-const handlers = {
-  entry: require('./handlers/entry'),
-  output: require('./handlers/output')
-};
+const fs = require('fs');
+const fieldHandlers = {};
+const handlers = fs.readdirSync(__dirname + '/handlers');
 
-module.exports = handlers;
+handlers.forEach(function (handler) {
+  handler = handler.replace('.js', '');
+  fieldHandlers[handler] = require('./handlers/' + handler);
+});
+
+module.exports = fieldHandlers;
