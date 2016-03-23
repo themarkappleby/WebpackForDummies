@@ -34,10 +34,10 @@ webpackForDummies.generateConfig();
 | --- | --- | --- | --- |
 | input | yes | NA | The string path to the input (or entry) file |
 | output | yes | NA | The string path to the output file |
-| hotReload | no | false | Enable hot module reloading on the Webpack dev server |
-| clientPort | no | NA | The int port number of the Webpack dev server |
-| target | no | NA | `'node'` will compile output for a node environment |
+| hot | no | true | Enable hot module reloading on the Webpack dev server |
+| port | no | 4000 | The int port number of the Webpack dev server |
 | clean | no | true | Clean (destroy and re-create) the output directory |
+| target | no | NA | `'node'` will compile output for a node environment |
 
 ## Methods
 

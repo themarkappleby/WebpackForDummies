@@ -16,12 +16,6 @@ function plugins () {
     );
   }
 
-  if (this.hotReload) {
-    pluginCollection.push(
-      new webpack.HotModuleReplacementPlugin()
-    );
-  }
-
   return pluginCollection;
 }
 
