@@ -2,7 +2,9 @@
 
 function entry () {
   if (!this.input) throw 'input required';
-  return [this.input];
+  return {
+    entry: [this.input]
+  };
 }
 
 module.exports = entry;

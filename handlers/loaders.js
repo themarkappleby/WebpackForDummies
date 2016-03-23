@@ -1,17 +1,19 @@
 "use strict";
 
-// named moduleHandler to avoid naming conflict with node's module
-function moduleHandler () {
+const cssnext = require('postcss-cssnext');
+
+function loaders () {
   return {
-    loaders: [
-      jsLoader.call(this),
-      styleLoader.call(this)
-    ]
+    module: {
+      loaders: [jsLoader(), styleLoader()]
+    },
+    postcss: [cssnext]
   }
 }
 
 function jsLoader () {
   return {
+    name: 'jsLoader',
     test: /\.(js|jsx)$/,
     exclude: /node_modules/,
     loaders: ['babel?presets[]=react,presets[]=es2015']
@@ -20,10 +22,11 @@ function jsLoader () {
 
 function styleLoader () {
   return {
+    name: 'styleLoader',
     test: /\.css$/,
     exclude: /node_modules/,
     loaders: ['style', 'css?modules', 'postcss']
   };
 }
 
-module.exports = moduleHandler;
+module.exports = loaders;

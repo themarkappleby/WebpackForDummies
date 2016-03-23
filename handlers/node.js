@@ -3,8 +3,10 @@
 function node () {
   if (this.target === 'node') {
     return {
-      __filename: true,
-      __dirname: true
+      node: {
+        __filename: true,
+        __dirname: true
+      }
     }
   }
 }

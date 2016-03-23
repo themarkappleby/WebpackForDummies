@@ -3,24 +3,31 @@
 const fs = require('fs');
 const consoleColors = require('colors');
 
-function generateConfig () {
+function generateConfig() {
   try {
     return handleFields.call(this);
   } catch (error) {
-    showError(error)
+    showError(error);
   }
 }
 
-function handleFields () {
-  let self = this;
-  let config = {}
+function handleFields() {
+  const self = this;
+  const config = {}
   const handlers = fs.readdirSync(__dirname + '/handlers');
   handlers.forEach(function (handlerName) {
-    handlerName = handlerName.split('.')[0];
-    let fieldValue = require('./handlers/' + handlerName).call(self);
-    if (fieldValue) config[handlerName] = fieldValue;
+    let fieldValues = require('./handlers/' + handlerName).call(self);
+    combineFieldsWithConfig(fieldValues, config);
   });
   return config;
+}
+
+function combineFieldsWithConfig (fieldValues, config) {
+  if (fieldValues) {
+    for (var fieldValue in fieldValues) {
+      config[fieldValue] = fieldValues[fieldValue];
+    }
+  }
 }
 
 function showError (error) {

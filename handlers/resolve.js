@@ -2,7 +2,9 @@
 
 function resolve () {
   return {
-    extensions: ['', '.js', '.jsx']
+    resolve: {
+      extensions: ['', '.js', '.jsx']
+    }
   };
 }
 

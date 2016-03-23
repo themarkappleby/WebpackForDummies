@@ -2,7 +2,9 @@
 
 function target () {
   if (this.target) {
-    return this.target;
+    return {
+      target: this.target
+    };
   }
 }
 

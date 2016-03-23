@@ -5,10 +5,9 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 function plugins () {
-
   const pluginCollection = [];
 
-  if (this.clean !== false) {
+  if (this.clean) {
     pluginCollection.push(
       new CleanWebpackPlugin(path.dirname(this.output), {
         root: path.dirname(this.output) + '/..'
@@ -16,7 +15,9 @@ function plugins () {
     );
   }
 
-  return pluginCollection;
+  return {
+    plugins: pluginCollection
+  };
 }
 
 module.exports = plugins;

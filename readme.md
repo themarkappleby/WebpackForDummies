@@ -36,11 +36,11 @@ webpackForDummies.generateConfig();
 | output | yes | NA | The string path to the output file |
 | hot | no | true | Enable hot module reloading on the Webpack dev server |
 | port | no | 4000 | The int port number of the Webpack dev server |
-| clean | no | true | Clean (destroy and re-create) the output directory |
+| clean | no | false | Clean (destroy and re-create) the output directory |
 | target | no | NA | `'node'` will compile output for a node environment |
 
 ## Methods
 
-`generateConfig()`: Returns a Webpack configuration option based on the configuration options Webpack for Dummies was initialized with.
+`generateConfig()`: Returns a Webpack configuration object based on the configuration options Webpack for Dummies was initialized with.
 
 `startDevServer()`: Starts a Webpack dev server based on the configuration options Wepback for Dummies was initialized with.
